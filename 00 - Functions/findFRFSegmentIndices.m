@@ -1,11 +1,11 @@
-function [start_indices, end_indices, seg_count] = findFRFSegmentIndices(signal, resp_upper_threshold, resp_lower_threshold, buffer_time, sampling_time, signal_duration)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Oier FRANCO & Xavier BEUDAERT & Jason ZENG                              %
-% creation 14 Nov 2016                                                    %
-% last modification 28 Nov 2016                                           %
-% IK4-IDEKO                                                               %
+% Optimal cutting condition selection for high quality receptance         
+% measurements by Sweep Milling Force Excitation
+% 
+% Authors: Oier Franco, Xavier Beudaert, Alex Iglesias, Zoltan Dombovari,
+%          Kaan Erkorkmaz, Jokin Munoa. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   
+function [start_indices, end_indices, seg_count] = findFRFSegmentIndices(signal, resp_upper_threshold, resp_lower_threshold, buffer_time, sampling_time, signal_duration) 
 % This program allows to find the start and end index of each signal. Also,
 % the number of sections are numbered.
 % 

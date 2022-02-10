@@ -95,9 +95,3 @@ if CheckPlot
 end 
 
 end 
-
-
-
-
-
-
