@@ -21,14 +21,14 @@
 
 clc
 clear all 
-addpath('00 - Functions GIT');
+addpath('00 - Functions');
 addpath('01 - Data Sim');
 
 Delta_Freq_FRF_Hz    = 0.25;    % Frequency discretization for power spectrum computations
 Overlap              = 14000;   % Number of points between overlaps for power spectrum computation
 
 % Already computed time domain signal with different tool radial engagement 
-Signal_nmbr = 2;    % 1: Ae = 12mm
+Signal_nmbr = 1;    % 1: Ae = 12mm
                     % 2: Ae = 72mm 
 
 %% 1 - Get time domain data
@@ -61,17 +61,17 @@ Fs_Hz = 1/(Sliced_data_conc_1(2,7)-Sliced_data_conc_1(1,7));
 
 if 0
     % X
-    s_x = 0.1597;
+    s_x = 0.01597;
     Signal_accel1_X = s_x*randn(length(Sliced_data_cen_1),1);
     Signal_accel2_X = s_x*randn(length(Sliced_data_cen_1),1);
     Signal_accel3_X = s_x*randn(length(Sliced_data_cen_1),1);
     % Y
-    s_y = 0.1175;
+    s_y = 0.01175;
     Signal_accel1_Y = s_y*randn(length(Sliced_data_cen_1),1);
     Signal_accel2_Y = s_y*randn(length(Sliced_data_cen_1),1);
     Signal_accel3_Y = s_y*randn(length(Sliced_data_cen_1),1); 
     % Z
-    s_z = 0.0139;
+    s_z = 0.00139;
     Signal_accel1_Z = s_z*randn(length(Sliced_data_cen_1),1);
     Signal_accel2_Z = s_z*randn(length(Sliced_data_cen_1),1);
     Signal_accel3_Z = s_z*randn(length(Sliced_data_cen_1),1); 
@@ -88,9 +88,25 @@ if 0
     Sliced_data_cen_1(:,2)  = Sliced_data_cen_1(:,2)+Signal_accel3_Y(:,1);
     Sliced_data_cen_1(:,3)  = Sliced_data_cen_1(:,3)+Signal_accel3_Z(:,1);
     
+    figure(8)
+    subplot(3,2,1)
+    plot(Sliced_data_conc_1(:,7),Signal_accel1_X); xlabel('Time (s)'); ylabel('Acceleration X (m/s^2)');
+    xlim([Sliced_data_conc_1(1,7), Sliced_data_conc_1(end,7)]); ylim([-0.1, 0.1]); grid on
+    subplot(3,2,2)
+    histogram(Signal_accel1_X);xlabel('Acceleration X (m/s^2)'); ylabel('Number of samples'); xlim([-0.1, 0.1])
+    subplot(3,2,3)
+    plot(Sliced_data_conc_1(:,7),Signal_accel1_Y); xlabel('Time (s)'); ylabel('Acceleration Y (m/s^2)');
+    xlim([Sliced_data_conc_1(1,7), Sliced_data_conc_1(end,7)]); ylim([-0.1, 0.1]); grid on
+    subplot(3,2,4)
+    histogram(Signal_accel1_Y);xlabel('Acceleration Y (m/s^2)'); ylabel('Number of samples'); xlim([-0.1, 0.1])
+    subplot(3,2,5)
+    plot(Sliced_data_conc_1(:,7),Signal_accel1_Z); xlabel('Time (s)'); ylabel('Acceleration Z (m/s^2)');
+    xlim([Sliced_data_conc_1(1,7), Sliced_data_conc_1(end,7)]); ylim([-0.1, 0.1]); grid on
+    subplot(3,2,6)
+    histogram(Signal_accel1_Z);xlabel('Acceleration Z (m/s^2)'); ylabel('Number of samples'); xlim([-0.05, 0.05])
 end
 % Plot time domain data, Figure 9. 
-    figure()
+    figure(9)
     % Down-milling
     subplot(3,2,1)
     plot(Sliced_data_conc_1(:,7),Sliced_data_conc_1(:,1),'','DisplayName','Accel. X');
