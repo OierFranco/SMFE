@@ -1,3 +1,11 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optimal cutting condition selection for high quality receptance         
+% measurements by Sweep Milling Force Excitation
+% 
+% Authors: Oier Franco, Xavier Beudaert, Alex Iglesias, Zoltan Dombovari,
+%          Kaan Erkorkmaz, Jokin Munoa. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [Spectrum_matrix] = Get_Power_Spectrum_matrix (Sliced_data,Overlap,Delta_Freq_FRF_Hz,Fs_Hz)
 % Function to compute the cross and auto-power spectrum for each cutting
 % test.

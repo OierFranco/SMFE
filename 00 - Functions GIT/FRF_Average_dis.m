@@ -1,8 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optimal cutting condition selection for high quality receptance         
+% measurements by Sweep Milling Force Excitation
+% 
+% Authors: Oier Franco, Xavier Beudaert, Alex Iglesias, Zoltan Dombovari,
+%          Kaan Erkorkmaz, Jokin Munoa. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [FRF_mean,FRF_max,FRF_min] = FRF_Average_dis(Entrada,FreqGraf,CheckPlot)
-% Compute frequency-domain averaged value
-% This proccedure clears the spikes of the measurement.
-% for k = 1:length(fieldnames(Entrada))
-    %     Prueba manual para sacar las medias
+% Compute frequency domain averaged value
  FreqGraf = FreqGraf';   
     for m = 1: numel(Entrada)
         
@@ -22,7 +26,6 @@ function [FRF_mean,FRF_max,FRF_min] = FRF_Average_dis(Entrada,FreqGraf,CheckPlot
             figure(1)
             % X
             ax(1)=subplot(6,3,1);hold on;grid on;box on;
-%             plot(FreqGraf,abs(FRFxx_temp./(2*1i.*pi*FreqGraf)./(2*1i.*pi*FreqGraf)),'--')
             plot(FreqGraf,abs(FRFxx_temp),'--');hold on;
             title('FRF XX')
             ax(2)=subplot(6,3,4);hold on;grid on;box on;
@@ -70,9 +73,7 @@ function [FRF_mean,FRF_max,FRF_min] = FRF_Average_dis(Entrada,FreqGraf,CheckPlot
             ax(18)=subplot(6,3,18);hold on;grid on;box on;
             plot(FreqGraf,angle(FRFzz_temp)*180/pi,'--');hold on;
             linkaxes(ax, 'x')
-            xlim([10,200])
-            
-            
+            xlim([10,200])      
      end 
     % Frequency iteration to get mean value    
     for l = 1:length(FRFxx_temp)
@@ -124,22 +125,6 @@ function [FRF_mean,FRF_max,FRF_min] = FRF_Average_dis(Entrada,FreqGraf,CheckPlot
     FRF_min.FRFzx = FRFzx_min;   FRF_min.FRFzy = FRFzy_min;   FRF_min.FRFzz = FRFzz_min;
 
     if CheckPlot
-                  
-        
-%             figure(8);hold on
-%             plot(FreqGraf,abs(FRF_mean.FRFxx./(2*1i.*pi*FreqGraf)./(2*1i.*pi*FreqGraf)),'-')
-% %             plot(FreqGraf,abs(FRFxx_max./(2*1i.*pi*FreqGraf)./(2*1i.*pi*FreqGraf)),'k-')
-% %             plot(FreqGraf,abs(FRFxx_min./(2*1i.*pi*FreqGraf)./(2*1i.*pi*FreqGraf)),'m-')
-%             plot(FreqGraf,abs(FRFxx_temp./(2*1i.*pi*FreqGraf)./(2*1i.*pi*FreqGraf)),'--')
-%             Shade=fill([FreqGraf,fliplr(FreqGraf)],abs([FRF_max.FRFxx,fliplr(FRF_min.FRFxx)]),'r');
-%             set(Shade,'FaceAlpha',0.5,'EdgeAlpha',0)
-%             xlim([10 200])
-%                      
-%             PlotProperties.Handles{1}.FRF.Shade =fill([FreqGraf,fliplr(FreqGraf)],abs([FRF_max.FRFxx,fliplr(FRF_min.FRFxx)]),'r','DisplayName','Confidence interval');%plot the data
-%             set(PlotProperties.Handles{1}.FRF.Shade,'FaceAlpha',0.5,'EdgeAlpha',0);%set edge color
-%             
-            
-            
             
             figure(1)
             % X
@@ -184,12 +169,5 @@ function [FRF_mean,FRF_max,FRF_min] = FRF_Average_dis(Entrada,FreqGraf,CheckPlot
             linkaxes(ax, 'x')
             xlim([10,200])
      end 
-    
-    
-    
-    
+        
 end
-
-
-
-% end 
